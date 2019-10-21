@@ -1,9 +1,9 @@
 LaTex :code:`standalone` 包的配置
 ===================================
 
-本教程是基於由 `Martin Scharrer
+本教程是基于由 `Martin Scharrer
 <https://bitbucket.org/martin_scharrer/standalone/src/default/>`_
-開發的 |standalone| 包（自帶 :code:`standalone` 類），故此於此對此包稍作講解。
+开发的 |standalone| 包（自带 :code:`standalone` 类），故此于此对此包稍作讲解。
 
 .. |standalone| raw:: html
 
@@ -13,15 +13,15 @@ LaTex :code:`standalone` 包的配置
 
 .. note:: :code:`standalone` (*complex*) [#]_
 
-    :code:`standalone` 是LaTex中非常有用的一個包。本教程主要講述怎樣利用此包來進行圖片的轉換，但此包其實還有其它相當多的應用。 `Overleaf
-    <https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects#The_standalone_package>`_ 上有一個非常有用的教程。
+    :code:`standalone` 是LaTex中非常有用的一个包。本教程主要讲述怎样利用此包来进行图片的转换，但此包其实还有其它相当多的应用。 `Overleaf
+    <https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects#The_standalone_package>`_ 上有一个非常有用的教程。
 
-:code:`standalone` 的轉換命令配置
+:code:`standalone` 的转换命令配置
 ----------------------------------
 
-:code:`standalone` 本身的 `說明文檔 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 已經對配置有詳盡的說明，此處重點說一下轉換成圖片需要用到的 :code:`convert` 選項。
+:code:`standalone` 本身的 `说明文档 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 已经对配置有详尽的说明，此处重点说一下转换成图片需要用到的 :code:`convert` 选项。
 
-配置 :code:`convert` 需要在 :code:`documentclass` 中進行。以下是一個利用 :code:`pdf2svg` 轉換爲SVG的範例配置。
+配置 :code:`convert` 需要在 :code:`documentclass` 中进行。以下是一个利用 :code:`pdf2svg` 转换为SVG的范例配置。
 
 .. code-block:: latex
     :linenos:
@@ -33,62 +33,62 @@ LaTex :code:`standalone` 包的配置
 其中，
 
 * :code:`tikz`
-    此選項告訴 :code:`standalone` LaTex文檔中存在 :code:`tikz` 圖片。
+    此选项告诉 :code:`standalone` LaTex文档中存在 :code:`tikz` 图片。
 
 * :code:`convert`
-    此選項開啓 :code:`standalone` 的轉換功能。
+    此选项开启 :code:`standalone` 的转换功能。
 
 * :code:`convert={}`
-    此選項是 :code:`convert` 的詳細配置項。
+    此选项是 :code:`convert` 的详细配置项。
 
 * :code:`outext=.svg`
-    設置輸出文件的後綴名爲“.svg”。更詳細的說明請參看 :code:`standalone` 本身的 `說明文檔 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
+    设置输出文件的后缀名为“.svg”。更详细的说明请参看 :code:`standalone` 本身的 `说明文档 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
 
 * :code:`command=\unexpanded{}`
-    此項是將要調用系統運行的命令。
+    此项是将要调用系统运行的命令。
 
 * :code:`pdf2svg`
-    調用的轉換工具。
+    调用的转换工具。
 
-    .. note:: :code:`pdf2svg` 的語法
+    .. note:: :code:`pdf2svg` 的语法
 
-        :code:`pdf2svg` 的語法可以參看 `這裏 <http://www.cityinthesky.co.uk/opensource/pdf2svg/>`_。
+        :code:`pdf2svg` 的语法可以参看 `这里 <http://www.cityinthesky.co.uk/opensource/pdf2svg/>`_。
 
-        其中，將一多頁PDF轉換爲分頁的多個SVG的語法爲：
+        其中，将一多页PDF转换为分页的多个SVG的语法为：
 
         .. code-block:: bash
 
-            pdf2svg <輸入文件名>.pdf <輸出文件名>%d.svg all
+            pdf2svg <输入文件名>.pdf <输出文件名>%d.svg all
 
-        注意，尖括號，及其所包裹中的內容需要替換爲所需的文件名。
+        注意，尖括号，及其所包裹中的内容需要替换为所需的文件名。
 
 * :code:`\infile`
-    輸入文件名，包含後綴名。默認後綴名爲“.pdf”或“.ps”。 更詳細的說明請參看 :code:`standalone` 本身的 `說明文檔 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
+    输入文件名，包含后缀名。默认后缀名为“.pdf”或“.ps”。 更详细的说明请参看 :code:`standalone` 本身的 `说明文档 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
 
 * :code:`\space`
-    空格。若不使用此參數，:code:`\infile` 後不會有空格，無論你實際上鍵入了多少個。 :code:`\outfile` 也是這樣。
+    空格。若不使用此参数，:code:`\infile` 后不会有空格，无论你实际上键入了多少个。 :code:`\outfile` 也是这样。
 
 * :code:`\outfile`
-    輸出文件名，包含後綴名。默認後綴名爲“.png”。此處已經通過 :code:`outext` 更改爲“.svg”。更詳細的說明請參看 :code:`standalone` 本身的 `說明文檔 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
+    输出文件名，包含后缀名。默认后缀名为“.png”。此处已经通过 :code:`outext` 更改为“.svg”。更详细的说明请参看 :code:`standalone` 本身的 `说明文档 <http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/standalone/standalone.pdf>`_ 中的表1。
 
-SVG配置範例中之命令將會被翻譯爲如下（可以通過查看LOG文件確認）。其中，
-:code:`mew_to_svg` 爲所用的TEX文件的文件名。
+SVG配置范例中之命令将会被翻译为如下（可以通过查看LOG文件确认）。其中，
+:code:`mew_to_svg` 为所用的TEX文件的文件名。
 
 .. code-block:: bash
     :linenos:
 
     pdf2svg mwe_to_svg.pdf mwe_to_svg-%01d.svg all
 
-由此可以看出，轉換的重點，是要把 :code:`convert={}` 中的配置正確設置，以令LaTex將其翻譯成正確的系統命令來進行圖片的轉換。用戶可以把多個系統命令整合爲一行，以做出豐富多彩的組合來達成不同的目標（在Windows中可以通過“&”或“&&”把多行命令合併爲一行）。在 :doc:`workflow` 中將會詳細敘述各種圖片轉換的流程。
+由此可以看出，转换的重点，是要把 :code:`convert={}` 中的配置正确设置，以令LaTex将其翻译成正确的系统命令来进行图片的转换。用户可以把多个系统命令整合为一行，以做出丰富多彩的组合来达成不同的目标（在Windows中可以通过“&”或“&&”把多行命令合并为一行）。在 :doc:`workflow` 中将会详细叙述各种图片转换的流程。
 
-.. note:: 運行系統命令
+.. note:: 运行系统命令
 
-    其實在本小結就可以看出，既然 :code:`standalone` 可以調用以上的命令，那當然也可以調用其它系統命令。理論上，用戶可以調用各種命令來做各種事，不僅僅是圖片的轉換。如果你有興趣，應該可以做到編譯完後自動上傳到某個網絡位置，或者刪除整個硬盤這一類有趣的事情。
+    其实在本小结就可以看出，既然 :code:`standalone` 可以调用以上的命令，那当然也可以调用其它系统命令。理论上，用户可以调用各种命令来做各种事，不仅仅是图片的转换。如果你有兴趣，应该可以做到编译完后自动上传到某个网络位置，或者删除整个硬盘这一类有趣的事情。
 
-編譯命令
+编译命令
 --------
 
-:code:`standalone` 需要在編譯時使用 :code:`-shell-escape` 參數。一個使用 :code:`xelatex` 對 :code:`mew_to_svg.tex` 進行編譯的命令如下（用 :code:`xelatex` 是因爲需要處理中文）。如果你使用LaTex編輯器進行書寫，比如 :code:`TEXsutdio` ，則需要在其中編輯其命令。你也當然可以直接在TEX文件所在之目錄下打開CMD，用命令直接編譯。
+:code:`standalone` 需要在编译时使用 :code:`-shell-escape` 参数。一个使用 :code:`xelatex` 对 :code:`mew_to_svg.tex` 进行编译的命令如下（用 :code:`xelatex` 是因为需要处理中文）。如果你使用LaTex编辑器进行书写，比如 :code:`TEXsutdio` ，则需要在其中编辑其命令。你也当然可以直接在TEX文件所在之目录下打开CMD，用命令直接编译。
 
 .. code-block:: bash
     :linenos:
@@ -96,16 +96,16 @@ SVG配置範例中之命令將會被翻譯爲如下（可以通過查看LOG文�
     xelatex -synctex=1 -interaction=nonstopmode -shell-escape mwe_to_svg.tex
 
 
-簡例
+简例
 -----
 
-以下提供一個轉換爲單頁多個SVG的簡例。詳細的例子會在後文說明。
+以下提供一个转换为单页多个SVG的简例。详细的例子会在后文说明。
 
-以下的文件可以在此項目的根目錄和 :code:`mew` 文件夾中找到。
+以下的文件可以在此项目的根目录和 :code:`mew` 文件夹中找到。
 
 **主文件：**
 
-:code:`mew` 文件夾中的 :code:`mwe_to_svg.tex`
+:code:`mew` 文件夹中的 :code:`mwe_to_svg.tex`
 
 .. literalinclude:: ../../mwe/mwe_to_svg.tex
     :linenos:
@@ -113,7 +113,7 @@ SVG配置範例中之命令將會被翻譯爲如下（可以通過查看LOG文�
 
 **tikz配置文件：**
 
-本教程根目錄中的 :code:`configs_tikz.tex`
+本教程根目录中的 :code:`configs_tikz.tex`
 
 .. literalinclude:: ../../configs_tikz.tex
     :linenos:
@@ -121,7 +121,7 @@ SVG配置範例中之命令將會被翻譯爲如下（可以通過查看LOG文�
 
 **color配置文件：**
 
-本教程根目錄中的 :code:`configs_colour.tex`
+本教程根目录中的 :code:`configs_colour.tex`
 
 .. literalinclude:: ../../configs_colour.tex
     :linenos:

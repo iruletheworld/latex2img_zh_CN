@@ -1,95 +1,95 @@
-腳本詳解
+脚本详解
 ==========
 
-本章將對本教程中所用到之腳本進行講解。
+本章将对本教程中所用到之脚本进行讲解。
 
-本項目所使用到的腳本存放在 :code:`util` 文件夾之中，它們爲：
+本项目所使用到的脚本存放在 :code:`util` 文件夹之中，它们为：
 
 * :code:`mk_folder.bat`
-    用於創建文件夾。
+    用于创建文件夹。
 
-    .. note:: 腳本命名問題
+    .. note:: 脚本命名问题
 
-        在Windows當中，如果把批處理腳本命名爲所要調用的系統命令名，很可能會導致死循環。 故此命名此腳本為 :code:`mk_folder.bat` 而不是 :code:`mkdir.bat`
+        在Windows当中，如果把批处理脚本命名为所要调用的系统命令名，很可能会导致死循环。 故此命名此脚本为 :code:`mk_folder.bat` 而不是 :code:`mkdir.bat`
 
 * :code:`gs_split_pdf.bat`
-    調用 :code:`ghostscript` 把PDF分割爲單頁。
+    调用 :code:`ghostscript` 把PDF分割为单页。
 
 * :code:`pdf_to_svg.bat`
-    把多頁PDF轉換爲分頁的SVG。
+    把多页PDF转换为分页的SVG。
 
 * :code:`pdf_to_png.bat`
-    把多頁PDF轉換爲分頁的PNG。
+    把多页PDF转换为分页的PNG。
 
 * :code:`pdf_to_emf.bat`
-    把PDF轉換爲EMF（僅一頁）。
+    把PDF转换为EMF（仅一页）。
 
 * :code:`pdf_to_eps.bat`
-    把PDF轉換爲的EPS（僅一頁）。
+    把PDF转换为的EPS（仅一页）。
 
-.. warning:: 路徑
+.. warning:: 路径
 
-    在設置 :code:`documentclass` 時，需要注意輸入的路徑參數。本教程一律使用相對路徑。
+    在设置 :code:`documentclass` 时，需要注意输入的路径参数。本教程一律使用相对路径。
 
-    :code:`./` 是指當前所在路徑。
+    :code:`./` 是指当前所在路径。
 
-    :code:`../` 是指往上移一層目錄。
+    :code:`../` 是指往上移一层目录。
 
 
-:code:`mk_folder.bat` 詳解
+:code:`mk_folder.bat` 详解
 ----------------------------
 
-:code:`mk_folder.bat` 的內容如下：
+:code:`mk_folder.bat` 的内容如下：
 
 .. literalinclude:: ../../util/mk_folder.bat
     :language: windows
     :linenos:
 
-此腳本用於在CMD當前所在之目錄爲根來創建文件夾。如果該文件夾已存在，則不創建而退出。
+此脚本用于在CMD当前所在之目录为根来创建文件夹。如果该文件夹已存在，则不创建而退出。
 
-此腳本接受一個參數。此參數爲將要創建的文件夾路徑。
+此脚本接受一个参数。此参数为将要创建的文件夹路径。
 
-此腳本之使用方法如下：
+此脚本之使用方法如下：
 
 .. code-block:: windows
 
-    mk_folder <要創建之文件夾路徑>
+    mk_folder <要创建之文件夹路径>
 
-此腳本的語法和 :code:`mkdir` 命令的語法一致。此處給出一個例子，假設要在目前的目錄下創建一個名爲 :code:`a` 的文件夾，其下有一個子目錄，名爲 :code:`b`，而 :code:`b` 之下又有一個子目錄，名爲 :code:`c` 。
+此脚本的语法和 :code:`mkdir` 命令的语法一致。此处给出一个例子，假设要在目前的目录下创建一个名为 :code:`a` 的文件夹，其下有一个子目录，名为 :code:`b`，而 :code:`b` 之下又有一个子目录，名为 :code:`c` 。
 
 .. code-block:: windows
 
     mk_folder a\b\c
 
-若文件夾路徑中有空格，則需要把路徑放在兩個雙引號之中，如：
+若文件夹路径中有空格，则需要把路径放在两个双引号之中，如：
 
 .. code-block:: windows
 
     mk_folder "a b\c d"
 
 
-:code:`gs_split_pdf.bat` 詳解
+:code:`gs_split_pdf.bat` 详解
 -------------------------------
 
-:code:`gs_split_pdf.bat` 的內容如下：
+:code:`gs_split_pdf.bat` 的内容如下：
 
 .. literalinclude:: ../../util/gs_split_pdf.bat
     :language: windows
     :linenos:
 
-此腳本用於把輸入的PDF分割爲單頁的PDF。
+此脚本用于把输入的PDF分割为单页的PDF。
 
-此腳本接受三個參數。它們如下（按順序）：
+此脚本接受三个参数。它们如下（按顺序）：
 
-#. 輸出的單頁PDF的文件夾的路徑
+#. 输出的单页PDF的文件夹的路径
 
-#. 輸出的單頁PDF文件的共用文件名加上“%d”
+#. 输出的单页PDF文件的共用文件名加上“%d”
 
-#. 需要分頁的PDF的路徑
+#. 需要分页的PDF的路径
 
-此腳本調用的是64位的 :code:`ghostscript` ，若你安裝的是32位的版本則需要把此腳本中的 :code:`gswin64c` 更改爲 :code:`gswin32c` 。
+此脚本调用的是64位的 :code:`ghostscript` ，若你安装的是32位的版本则需要把此脚本中的 :code:`gswin64c` 更改为 :code:`gswin32c` 。
 
-此處給出一個例子，輸出的文件夾爲 :code:`output` （已存在），共用文件名爲 :code:`common`，需要分頁的PDF爲 :code:`pdf_in` 。
+此处给出一个例子，输出的文件夹为 :code:`output` （已存在），共用文件名为 :code:`common`，需要分页的PDF为 :code:`pdf_in` 。
 
 .. code-block:: windows
 
@@ -97,27 +97,27 @@
 
 .. note:: “%d”
 
-    如果不在共用文件名後加上“%d”，:code:`ghostscript` 則不會對PDF進行分頁。
+    如果不在共用文件名后加上“%d”，:code:`ghostscript` 则不会对PDF进行分页。
 
 
-:code:`pdf_to_svg.bat` 詳解
+:code:`pdf_to_svg.bat` 详解
 ----------------------------
 
-:code:`pdf_to_svg.bat` 的內容如下：
+:code:`pdf_to_svg.bat` 的内容如下：
 
 .. literalinclude:: ../../util/pdf_to_svg.bat
     :language: windows
     :linenos:
 
-此腳本用於把PDF轉換爲SVG。
+此脚本用于把PDF转换为SVG。
 
-此腳本接受兩個參數。它們如下（按順序）：
+此脚本接受两个参数。它们如下（按顺序）：
 
-#. 需要轉換的PDF文件路徑
+#. 需要转换的PDF文件路径
 
-#. 輸出的單頁PDF文件的共用文件名加上“%d”
+#. 输出的单页PDF文件的共用文件名加上“%d”
 
-此腳本調用 :code:`pdf2svg` 來進行文件的轉換。此處給出一個例子，需要轉換的PDF名爲 :code:`pdf_in`，輸出的單頁PDF的共用文件名爲 :code:`pdf_out` ，輸出的文件夾爲 :code:`out_svg` （已存在）。
+此脚本调用 :code:`pdf2svg` 来进行文件的转换。此处给出一个例子，需要转换的PDF名为 :code:`pdf_in`，输出的单页PDF的共用文件名为 :code:`pdf_out` ，输出的文件夹为 :code:`out_svg` （已存在）。
 
 .. code-block:: windows
 
@@ -125,27 +125,27 @@
 
 .. note:: “%d”
 
-    如果不在共用文件名後加上“%d”，則只會轉換PDF的第一頁。
+    如果不在共用文件名后加上“%d”，则只会转换PDF的第一页。
 
 
-:code:`pdf_to_png.bat` 詳解
+:code:`pdf_to_png.bat` 详解
 ----------------------------
 
-:code:`pdf_to_png.bat` 的內容如下：
+:code:`pdf_to_png.bat` 的内容如下：
 
 .. literalinclude:: ../../util/pdf_to_png.bat
     :language: windows
     :linenos:
 
-此腳本用於把PDF轉換爲PNG。此腳本會在CMD當前所在之目錄創建PNG文件。
+此脚本用于把PDF转换为PNG。此脚本会在CMD当前所在之目录创建PNG文件。
 
-此腳本接受兩個參數。它們如下（按順序）：
+此脚本接受两个参数。它们如下（按顺序）：
 
-#. 轉換的PNG的DPI，一般爲300或600。過高的DPI會令轉換過程冗長。一般而言，打印需要至少300 DPI，一般600 DPI足以應付絕大部分情況。
+#. 转换的PNG的DPI，一般为300或600。过高的DPI会令转换过程冗长。一般而言，打印需要至少300 DPI，一般600 DPI足以应付绝大部分情况。
 
-#. 需要轉換的PDF的路徑
+#. 需要转换的PDF的路径
 
-此腳本調用 :code:`pdftocairo` 來進行文件的轉換。此處給出一個例子，轉換的DPI爲600像素，需要轉換的PDF名爲 :code:`pdf_in` 。
+此脚本调用 :code:`pdftocairo` 来进行文件的转换。此处给出一个例子，转换的DPI为600像素，需要转换的PDF名为 :code:`pdf_in` 。
 
 .. code-block:: windows
 
@@ -153,9 +153,9 @@
 
 .. note:: :code:`pdftocairo`
 
-    :code:`pdftocairo` 會自動把多頁PDF轉換爲單頁的PNG，非常方便。
+    :code:`pdftocairo` 会自动把多页PDF转换为单页的PNG，非常方便。
 
 
 .. note::
 
-    爲了方便，用戶可以把 :code:`util` 文件夾的路徑加入到系統環境變量 :code:`Path` 中，這樣就可以直接調用腳本，而不需要在命令中指定 :code:`util` 文件夾的路徑。
+    为了方便，用户可以把 :code:`util` 文件夹的路径加入到系统环境变量 :code:`Path` 中，这样就可以直接调用脚本，而不需要在命令中指定 :code:`util` 文件夹的路径。
