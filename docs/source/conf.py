@@ -94,11 +94,11 @@ latex_elements = {
     #
     'preamble': r'''
 
-    \usepackage[UTF8]{ctex}
+    % \usepackage[UTF8]{ctex}
 
     \usepackage{float}
 
-    % \usepackage{xeCJK}
+    \usepackage{xeCJK}
     % \setCJKmainfont{Source Han Serif TC}
     % \setCJKsansfont{Source Han Sans Bold Bold}
 
