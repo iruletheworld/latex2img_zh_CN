@@ -122,7 +122,7 @@ latex_elements = {
 latex_documents = [
     (master_doc,
      'latex2img.tex',
-     (u'LaTex (tikz)转换为图像'),
+     u'LaTex (tikz)转换为图像',
      u'高斯羽\ 博士 (Dr. Gāo, Sī Yǔ)', 'manual'),
 ]
 
