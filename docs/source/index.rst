@@ -1,8 +1,3 @@
-.. LaTex (tikz)转换为图像/LaTex (tikz)转换为图像/LaTex (tikz) to Images documentation master file, created by
-   sphinx-quickstart on Thu Oct 17 09:48:07 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ======================
 LaTex (tikz)转换为图像
 ======================
