@@ -94,13 +94,11 @@ latex_elements = {
     #
     'preamble': r'''
 
-    % \usepackage[UTF8]{ctex}
+    \usepackage[UTF8]{ctex}
 
     \usepackage{float}
 
     \usepackage{xeCJK}
-    \setCJKmainfont{AR PL Mingti2L GB}[ItalicFont = AR PL KaitiM GB]
-    \setCJKsansfont{Droid Sans Fallback}
     % \setCJKmainfont{Source Han Serif TC}
     % \setCJKsansfont{Source Han Sans Bold Bold}
 
