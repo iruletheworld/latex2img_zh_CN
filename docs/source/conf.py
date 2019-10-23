@@ -99,6 +99,8 @@ latex_elements = {
     \usepackage{float}
 
     \usepackage{xeCJK}
+    \setCJKmainfont{AR PL Mingti2L GB}[ItalicFont = AR PL KaitiM GB]
+    \setCJKsansfont{Droid Sans Fallback}
     % \setCJKmainfont{Source Han Serif TC}
     % \setCJKsansfont{Source Han Sans Bold Bold}
 
